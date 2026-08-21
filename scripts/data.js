@@ -73,7 +73,7 @@ const products = [
     price: '115.000đ - 145.000đ',
     badge: 'Miễn Khử Trùng',
     badgeClass: 'bg-purple-700',
-    image: 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80'
+    image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'PL-KEO-1111-4W',

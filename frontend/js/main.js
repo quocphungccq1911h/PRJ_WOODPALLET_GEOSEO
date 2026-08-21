@@ -6,7 +6,7 @@
 // LocalStorage Key for Quote Cart
 const QUOTE_CART_KEY = 'pallet_viet_quote_cart';
 
-// Initial dummy cart items if empty for demo display
+// Initial dummy cart items (3 SKUs) for demo display
 const DEFAULT_CART_ITEMS = [
   {
     id: 'PL-KEO-1210-4W',
@@ -16,7 +16,7 @@ const DEFAULT_CART_ITEMS = [
     loadCapacity: 'Tĩnh: 2500kg | Động: 1200kg',
     standard: 'Khử trùng ISPM 15 HT',
     quantity: 200,
-    priceEst: '135.000đ - 165.000đ/cái',
+    priceEst: '135.000đ - 165.000đ',
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80'
   },
   {
@@ -27,8 +27,19 @@ const DEFAULT_CART_ITEMS = [
     loadCapacity: 'Tĩnh: 3000kg | Động: 1500kg',
     standard: 'Độ ẩm < 18%, ISPM 15',
     quantity: 150,
-    priceEst: '190.000đ - 225.000đ/cái',
+    priceEst: '190.000đ - 225.000đ',
     image: 'https://images.unsplash.com/photo-1595246140625-573b715d11dc?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'PL-KEO-2W-1111',
+    name: 'Pallet Gỗ Keo 2 Hướng Chịu Tải 3-4 Tấn',
+    size: '1100 x 1100 x 140 mm',
+    woodType: 'Gỗ Keo Tải Nặng',
+    loadCapacity: 'Tĩnh: 4000kg | Động: 2000kg',
+    standard: 'Nan dày 22mm, đố khuyết',
+    quantity: 100,
+    priceEst: '140.000đ - 170.000đ',
+    image: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=600&q=80'
   }
 ];
 
@@ -53,11 +64,11 @@ function saveQuoteCart(cart) {
 
 function updateCartBadge() {
   const cart = getQuoteCart();
-  const totalCount = cart.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
+  const skuCount = cart ? cart.length : 0; // Đếm số SKU mặt hàng
   const badges = document.querySelectorAll('.quote-badge-count');
   badges.forEach(badge => {
-    badge.textContent = totalCount;
-    if (totalCount > 0) {
+    badge.textContent = skuCount;
+    if (skuCount > 0) {
       badge.classList.remove('hidden');
     } else {
       badge.classList.add('hidden');
@@ -67,34 +78,36 @@ function updateCartBadge() {
 
 function addToQuoteCart(item) {
   const cart = getQuoteCart();
-  const existing = cart.find(i => i.id === item.id);
-  if (existing) {
-    existing.quantity = parseInt(existing.quantity) + parseInt(item.quantity || 50);
+  const index = cart.findIndex(i => i.id === item.id);
+  if (index >= 0) {
+    cart[index].quantity = parseInt(cart[index].quantity || 0) + parseInt(item.quantity || 50);
   } else {
-    cart.push({
-      ...item,
-      quantity: parseInt(item.quantity || 50)
-    });
+    cart.push(item);
   }
   saveQuoteCart(cart);
-  showToast(`Đã thêm "${item.name}" vào Bảng Báo Giá (${item.quantity || 50} cái)!`);
+  showToastNotification(`Đã thêm "${item.name}" vào Bảng Báo Giá B2B!`);
 }
 
-function removeFromQuoteCart(id) {
+function removeFromQuoteCart(itemId) {
   let cart = getQuoteCart();
-  cart = cart.filter(item => item.id !== id);
+  cart = cart.filter(i => i.id !== itemId);
   saveQuoteCart(cart);
   if (typeof renderQuoteTable === 'function') {
     renderQuoteTable();
   }
-  showToast('Đã xóa sản phẩm khỏi bảng báo giá.', 'info');
+  showToastNotification('Đã xóa sản phẩm khỏi Bảng Báo Giá.');
 }
 
-function updateItemQuantity(id, qty) {
-  let cart = getQuoteCart();
-  const item = cart.find(i => i.id === id);
-  if (item) {
-    item.quantity = Math.max(1, parseInt(qty) || 1);
+function updateItemQuantity(itemId, quantity) {
+  const cart = getQuoteCart();
+  const index = cart.findIndex(i => i.id === itemId);
+  if (index >= 0) {
+    const qty = parseInt(quantity);
+    if (qty <= 0) {
+      removeFromQuoteCart(itemId);
+      return;
+    }
+    cart[index].quantity = qty;
     saveQuoteCart(cart);
     if (typeof renderQuoteTable === 'function') {
       renderQuoteTable();
@@ -102,101 +115,40 @@ function updateItemQuantity(id, qty) {
   }
 }
 
-// Toast Notification System
-function showToast(message, type = 'success') {
-  let toastContainer = document.getElementById('toast-container');
-  if (!toastContainer) {
-    toastContainer = document.createElement('div');
-    toastContainer.id = 'toast-container';
-    toastContainer.className = 'fixed bottom-24 right-6 z-50 flex flex-col space-y-3 pointer-events-none';
-    document.body.appendChild(toastContainer);
+// Toast Notification
+function showToastNotification(message) {
+  let toast = document.getElementById('b2b-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'b2b-toast';
+    toast.className = 'fixed top-5 right-5 z-50 bg-emerald-800 text-white px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 transition-all duration-300 transform translate-y-[-100px] opacity-0 text-sm font-semibold border border-emerald-600';
+    document.body.appendChild(toast);
   }
 
-  const toast = document.createElement('div');
-  const bgClass = type === 'success' ? 'bg-emerald-800 border-emerald-600' : 'bg-amber-900 border-amber-600';
-  const icon = type === 'success' ? 'fa-check-circle text-emerald-300' : 'fa-info-circle text-amber-300';
-
-  toast.className = `pointer-events-auto transform transition-all duration-300 ease-out translate-y-4 opacity-0 flex items-center p-4 min-w-[320px] max-w-md text-white ${bgClass} border rounded-xl shadow-2xl space-x-3`;
-  toast.innerHTML = `
-    <i class="fa-solid ${icon} text-2xl flex-shrink-0"></i>
-    <div class="flex-1 text-sm font-medium leading-snug">${message}</div>
-    <button class="text-gray-300 hover:text-white ml-2 p-1" onclick="this.parentElement.remove()">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-  `;
-
-  toastContainer.appendChild(toast);
-
-  requestAnimationFrame(() => {
-    toast.classList.remove('translate-y-4', 'opacity-0');
-    toast.classList.add('translate-y-0', 'opacity-100');
-  });
+  toast.innerHTML = `<i class="fa-solid fa-circle-check text-amber-400 text-lg"></i><span>${message}</span>`;
+  toast.classList.remove('translate-y-[-100px]', 'opacity-0');
+  toast.classList.add('translate-y-0', 'opacity-100');
 
   setTimeout(() => {
-    toast.classList.add('opacity-0', 'translate-y-4');
-    setTimeout(() => toast.remove(), 300);
-  }, 4000);
+    toast.classList.remove('translate-y-0', 'opacity-100');
+    toast.classList.add('translate-y-[-100px]', 'opacity-0');
+  }, 3500);
 }
 
-// Global Modal Handler
-function showSuccessModal(title, message) {
-  const modalHtml = `
-    <div id="b2b-success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm transition-opacity">
-      <div class="bg-white rounded-2xl max-w-lg w-full p-6 md:p-8 shadow-2xl border-t-4 border-emerald-600 text-center animate-scale-up">
-        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner">
-          <i class="fa-solid fa-truck-ramp-box"></i>
-        </div>
-        <h3 class="text-2xl font-bold text-gray-900 mb-2 font-display">${title || 'Gửi Yêu Cầu Thành Công!'}</h3>
-        <p class="text-gray-600 text-sm leading-relaxed mb-6">${message || 'Phòng Kỹ thuật & Bán hàng B2B Xưởng Pallet Gỗ Việt đã tiếp nhận. Chuyên viên kinh doanh khu vực sẽ liên hệ gửi báo giá chiết khấu trong <strong>15 phút</strong>.'}</p>
-        
-        <div class="bg-emerald-50 rounded-xl p-4 mb-6 border border-emerald-200 text-left text-xs text-emerald-900 space-y-2">
-          <div class="flex items-center gap-2 font-semibold text-emerald-800">
-            <i class="fa-solid fa-phone-volume"></i> Hotline Hỗ Trợ Gấp 24/7:
-            <a href="tel:0988776655" class="text-amber-700 font-bold hover:underline">0988.776.655</a>
-          </div>
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-clock"></i> Thời gian phản hồi tiêu chuẩn: 15 - 30 phút
-          </div>
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-shield-halved"></i> Cam kết giá gốc xuất xưởng - Đủ chứng chỉ ISPM 15
-          </div>
-        </div>
-
-        <button onclick="closeSuccessModal()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 px-6 rounded-xl transition duration-200 shadow-lg shadow-emerald-700/30">
-          Đã Hiểu & Đóng Cửa Sổ
-        </button>
-      </div>
-    </div>
-  `;
-
-  const oldModal = document.getElementById('b2b-success-modal');
-  if (oldModal) oldModal.remove();
-
-  document.body.insertAdjacentHTML('beforeend', modalHtml);
-}
-
-function closeSuccessModal() {
-  const modal = document.getElementById('b2b-success-modal');
-  if (modal) {
-    modal.classList.add('opacity-0');
-    setTimeout(() => modal.remove(), 200);
-  }
-}
-
-// Quick Quote Modal Trigger
+// Modal Popup - Quick Quote
 function openQuickQuoteModal(productName = '') {
-  const modalHtml = `
-    <div id="quick-quote-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-      <div class="bg-white rounded-2xl max-w-xl w-full p-6 md:p-8 shadow-2xl border-t-4 border-amber-600 relative">
-        <button onclick="closeQuickQuoteModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100">
-          &times;
-        </button>
+  let modal = document.getElementById('quick-quote-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'quick-quote-modal';
+    modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none';
+    modal.innerHTML = `
+      <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl transform scale-95 transition-transform duration-300 border-t-4 border-amber-600 relative">
+        <button onclick="closeQuickQuoteModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-xl font-bold p-1">&times;</button>
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-xl">
-            <i class="fa-solid fa-calculator"></i>
-          </div>
+          <div class="w-10 h-10 bg-amber-100 text-amber-800 rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-calculator"></i></div>
           <div>
-            <h3 class="text-xl font-bold text-gray-900">Nhận Báo Giá Nhanh B2B</h3>
+            <h3 class="text-lg font-bold text-gray-900 leading-tight">Yêu Cầu Báo Giá Sỉ Nhanh (15 Phút)</h3>
             <p class="text-xs text-gray-500">Báo giá trực tiếp tận xưởng sản xuất không qua trung gian</p>
           </div>
         </div>
@@ -204,7 +156,7 @@ function openQuickQuoteModal(productName = '') {
         <form id="quick-quote-form" onsubmit="handleQuickQuoteSubmit(event)" class="space-y-4">
           <div>
             <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Sản phẩm / Quy cách cần báo *</label>
-            <input type="text" name="product_specs" value="${productName || 'Pallet gỗ theo yêu cầu / Pallet xuất khẩu'}" required
+            <input type="text" name="product_specs" id="quick-modal-product" value="${productName || 'Pallet gỗ theo yêu cầu / Pallet xuất khẩu'}" required
                    class="w-full text-sm px-3.5 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none">
           </div>
 
@@ -250,50 +202,95 @@ function openQuickQuoteModal(productName = '') {
           </button>
         </form>
       </div>
-    </div>
-  `;
+    `;
+    document.body.appendChild(modal);
+  }
 
-  const oldModal = document.getElementById('quick-quote-modal');
-  if (oldModal) oldModal.remove();
+  const inputEl = document.getElementById('quick-modal-product');
+  if (inputEl && productName) {
+    inputEl.value = productName;
+  }
 
-  document.body.insertAdjacentHTML('beforeend', modalHtml);
+  modal.classList.remove('opacity-0', 'pointer-events-none');
+  modal.classList.add('opacity-100', 'pointer-events-auto');
+  const card = modal.querySelector('div');
+  if (card) {
+    card.classList.remove('scale-95');
+    card.classList.add('scale-100');
+  }
 }
 
 function closeQuickQuoteModal() {
   const modal = document.getElementById('quick-quote-modal');
-  if (modal) modal.remove();
+  if (modal) {
+    modal.classList.remove('opacity-100', 'pointer-events-auto');
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    const card = modal.querySelector('div');
+    if (card) {
+      card.classList.remove('scale-100');
+      card.classList.add('scale-95');
+    }
+  }
 }
 
-function handleQuickQuoteSubmit(event) {
-  event.preventDefault();
+function handleQuickQuoteSubmit(e) {
+  e.preventDefault();
   closeQuickQuoteModal();
-  showSuccessModal('Yêu Cầu Báo Giá Đã Được Gửi!', 'Bộ phận kinh doanh B2B Pallet Gỗ Việt sẽ tính toán phương án bốc xếp, cước vận chuyển tới KCN của Quý khách và gửi bảng giá chiết khấu sau 15 phút.');
+  showSuccessModal(
+    'Đã Gửi Yêu Cầu Báo Giá Thành Công!',
+    'Bộ phận kinh doanh B2B của Xưởng Pallet Gỗ Việt sẽ tính toán chiết khấu số lượng và gửi bảng giá chi tiết kèm bản vẽ qua Zalo/Email trong vòng 15 phút.'
+  );
 }
 
-// DOM Content Loaded Handler
+function showSuccessModal(title, message) {
+  let modal = document.getElementById('b2b-success-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'b2b-success-modal';
+    modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm';
+    document.body.appendChild(modal);
+  }
+
+  modal.innerHTML = `
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl text-center border-t-4 border-emerald-600 animate-scale-up">
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h3 class="text-xl font-bold text-gray-900 mb-2">${title}</h3>
+      <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mb-6">${message}</p>
+      <div class="bg-gray-50 rounded-xl p-4 text-xs text-left text-gray-600 mb-6 space-y-1.5 border border-gray-200">
+        <div><i class="fa-solid fa-clock text-amber-600 mr-2"></i><strong>Thời gian phản hồi:</strong> Cam kết dưới 15 phút.</div>
+        <div><i class="fa-solid fa-phone text-emerald-700 mr-2"></i><strong>Hotline hỗ trợ gấp:</strong> 0988.776.655 (GĐ Xưởng)</div>
+        <div><i class="fa-solid fa-shield-halved text-emerald-700 mr-2"></i><strong>Cam kết chất lượng:</strong> Chuẩn ISPM 15, sai 1 đổi 1.</div>
+      </div>
+      <button onclick="document.getElementById('b2b-success-modal').remove()" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 rounded-xl transition">
+        Đã Hiểu & Đóng
+      </button>
+    </div>
+  `;
+}
+
+// Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
-  // Update quote cart badge
   updateCartBadge();
 
-  // Mobile Menu Toggle
-  const mobileMenuBtn = document.getElementById('mobile-menu-button');
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
-  if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
   }
 
-  // Sticky Header Effect
-  const mainHeader = document.getElementById('main-header');
-  if (mainHeader) {
+  // Sticky header shadow on scroll
+  const header = document.getElementById('main-header');
+  if (header) {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 20) {
-        mainHeader.classList.add('shadow-md', 'bg-white/95', 'backdrop-blur-md');
-        mainHeader.classList.remove('bg-white');
+        header.classList.add('shadow-md');
       } else {
-        mainHeader.classList.remove('shadow-md', 'bg-white/95', 'backdrop-blur-md');
-        mainHeader.classList.add('bg-white');
+        header.classList.remove('shadow-md');
       }
     });
   }
@@ -326,7 +323,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetId = btn.getAttribute('data-tab-target');
       const tabGroup = btn.getAttribute('data-tab-group') || 'default';
       
-      // Update buttons in group
       document.querySelectorAll(`[data-tab-group="${tabGroup}"]`).forEach(b => {
         b.classList.remove('border-emerald-700', 'text-emerald-800', 'bg-emerald-50', 'font-bold');
         b.classList.add('border-transparent', 'text-gray-600', 'hover:text-gray-900');
@@ -334,7 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('border-emerald-700', 'text-emerald-800', 'bg-emerald-50', 'font-bold');
       btn.classList.remove('border-transparent', 'text-gray-600');
 
-      // Update content panes
       document.querySelectorAll(`[data-tab-content="${tabGroup}"]`).forEach(pane => {
         pane.classList.add('hidden');
       });
