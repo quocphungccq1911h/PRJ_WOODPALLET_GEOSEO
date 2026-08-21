@@ -1,0 +1,18 @@
+﻿{
+  "name": "prj-woodpallet-geoseo",
+  "version": "1.0.0",
+  "description": "Website B2B Xưởng Sản Xuất Pallet Gỗ Việt (HTML5, Tailwind CSS, FontAwesome, Vanilla JS)",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "node build_all.js"
+  },
+  "keywords": [
+    "pallet-go",
+    "b2b",
+    "geo-seo",
+    "tailwind"
+  ],
+  "author": "",
+  "license": "ISC"
+}
