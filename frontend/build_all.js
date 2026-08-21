@@ -1,4 +1,4 @@
-﻿const { buildIndex } = require('./build_home');
+const { buildIndex } = require('./build_home');
 const { buildSanpham, buildChitiet } = require('./build_catalog');
 const { buildBaogia, buildKhuvuc } = require('./build_quote_geo');
 const { buildGioithieu, buildLienhe } = require('./build_info');

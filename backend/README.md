@@ -1,4 +1,4 @@
-﻿# Backend & CMS Service (Pallet Gỗ Việt B2B)
+# Backend & CMS Service (Pallet Gỗ Việt B2B)
 
 Thư mục này dành cho hệ thống Backend API & CMS Quản trị nội dung:
 - **Quản lý sản phẩm Pallet** (Thêm/Sửa quy cách, đơn giá sỉ, hình ảnh, chứng chỉ ISPM 15).

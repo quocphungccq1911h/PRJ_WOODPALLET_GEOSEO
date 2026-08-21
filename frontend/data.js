@@ -1,4 +1,4 @@
-﻿const products = [
+const products = [
   {
     id: 'PL-KEO-1210-4W',
     name: 'Pallet Gỗ Keo 4 Hướng Nâng Xuất Khẩu',

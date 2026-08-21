@@ -1,4 +1,4 @@
-﻿# 🌲 NỀN TẢNG B2B XƯỞNG SẢN XUẤT PALLET GỖ (GEO SEO & CMS)
+# 🌲 NỀN TẢNG B2B XƯỞNG SẢN XUẤT PALLET GỖ (GEO SEO & CMS)
 
 Dự án website chuyên nghiệp chuẩn B2B dành cho **Xưởng Sản Xuất Pallet Gỗ** với chiến lược tối ưu hóa Local GEO SEO cho các Khu Công Nghiệp (KCN) trọng điểm.
 

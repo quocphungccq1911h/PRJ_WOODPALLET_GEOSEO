@@ -1,4 +1,4 @@
-﻿const fs = require('fs');
+const fs = require('fs');
 const { getHead, getNavbar, getFooter } = require('./template_helpers');
 
 function buildBaogia() {

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * PALLET GỖ VIỆT - B2B INDUSTRIAL SCRIPTS
  * Main JavaScript logic for interactivity, SEO state, and B2B Quote Cart management.
  */
