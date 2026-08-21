@@ -1,7 +1,8 @@
 {
   "name": "woodpallet-frontend",
   "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
-    "build": "echo Static site ready"
+    "build": "echo Build complete"
   }
 }
