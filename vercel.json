@@ -1,18 +1,5 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/css/(.*)", "destination": "/frontend/css/$1" },
-    { "source": "/js/(.*)", "destination": "/frontend/js/$1" },
-    { "source": "/images/(.*)", "destination": "/frontend/images/$1" },
-    { "source": "/favicon.ico", "destination": "/frontend/favicon.ico" },
-    { "source": "/favicon.svg", "destination": "/frontend/favicon.svg" },
-    { "source": "/", "destination": "/frontend/index.html" },
-    { "source": "/san-pham", "destination": "/frontend/san-pham.html" },
-    { "source": "/chi-tiet-san-pham", "destination": "/frontend/chi-tiet-san-pham.html" },
-    { "source": "/bao-gia", "destination": "/frontend/bao-gia.html" },
-    { "source": "/khu-vuc-geo", "destination": "/frontend/khu-vuc-geo.html" },
-    { "source": "/gioi-thieu", "destination": "/frontend/gioi-thieu.html" },
-    { "source": "/lien-he", "destination": "/frontend/lien-he.html" },
-    { "source": "/(.*)", "destination": "/frontend/$1" }
-  ]
+  "buildCommand": "echo Static site ready",
+  "outputDirectory": ".",
+  "cleanUrls": true
 }
