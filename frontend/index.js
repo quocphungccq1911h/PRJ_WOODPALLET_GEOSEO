@@ -20,27 +20,30 @@ module.exports = (req, res) => {
     reqUrl = '/index.html';
   }
 
-  // Remove leading slashes and prevent directory traversal
   const cleanPath = path.normalize(reqUrl).replace(/^(\.\.[\/\\])+/, '');
   let filePath = path.join(__dirname, cleanPath);
 
-  // Check if directory
   if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
     filePath = path.join(filePath, 'index.html');
   }
 
-  // Check if missing .html extension
   if (!fs.existsSync(filePath) && !path.extname(filePath) && fs.existsSync(filePath + '.html')) {
     filePath = filePath + '.html';
   }
 
   if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
-    const ext = path.extname(filePath).toLowerCase();
-    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-    res.statusCode = 200;
-    res.setHeader('Content-Type', contentType);
-    res.setHeader('Cache-Control', 'public, max-age=3600');
-    return fs.createReadStream(filePath).pipe(res);
+    try {
+      const content = fs.readFileSync(filePath);
+      const ext = path.extname(filePath).toLowerCase();
+      const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+      res.statusCode = 200;
+      res.setHeader('Content-Type', contentType);
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+      return res.end(content);
+    } catch (e) {
+      res.statusCode = 500;
+      return res.end('500 Internal Error');
+    }
   }
 
   res.statusCode = 404;
