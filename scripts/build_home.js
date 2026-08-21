@@ -82,11 +82,11 @@ function buildIndex() {
             <i class="fa-solid fa-certificate text-amber-400"></i>
             <span>TIÊU CHUẨN XUẤT KHẨU ISPM 15 / SẤY NHIỆT HT ĐỘ ẨM &lt; 18%</span>
           </div>
-          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight font-display">
-            XƯỞNG SẢN XUẤT PALLET GỖ TRỰC TIẾP <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">GIÁ GỐC KHÔNG QUA TRUNG GIAN</span>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight font-display">
+            Xưởng Sản Xuất Pallet Gỗ Trực Tiếp <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">Giá Gốc Không Qua Trung Gian</span>
           </h1>
-          <p class="text-gray-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+          <p class="text-white/90 font-normal text-base md:text-lg leading-relaxed max-w-2xl">
             Cung cấp số lượng lớn <strong>Pallet Gỗ Keo, Gỗ Thông, Pallet Ván Ép, Thùng Gỗ Xuất Khẩu</strong> cho các nhà máy, tập đoàn logistics và kho vận tại KCN Bình Dương, Đồng Nai, TP.HCM, Bắc Ninh. Nhận đóng mẫu theo bản vẽ kỹ thuật riêng.
           </p>
           <div class="flex flex-wrap items-center gap-4 pt-4">
@@ -103,10 +103,10 @@ function buildIndex() {
             </a>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-emerald-800/60">
-            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="fa-solid fa-check text-emerald-400"></i> Đóng đinh xoắn tự động</div>
-            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="fa-solid fa-check text-emerald-400"></i> Giao hàng 2-4h tới KCN</div>
-            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="fa-solid fa-check text-emerald-400"></i> Bản vẽ 3D miễn phí</div>
-            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="fa-solid fa-check text-emerald-400"></i> Hóa đơn VAT & CO/CQ</div>
+            <div class="flex items-center gap-2 text-sm font-medium text-white"><i class="fa-solid fa-check text-amber-400"></i> Đóng đinh xoắn tự động</div>
+            <div class="flex items-center gap-2 text-sm font-medium text-white"><i class="fa-solid fa-check text-amber-400"></i> Giao hàng 2-4h tới KCN</div>
+            <div class="flex items-center gap-2 text-sm font-medium text-white"><i class="fa-solid fa-check text-amber-400"></i> Bản vẽ 3D miễn phí</div>
+            <div class="flex items-center gap-2 text-sm font-medium text-white"><i class="fa-solid fa-check text-amber-400"></i> Hóa đơn VAT & CO/CQ</div>
           </div>
         </div>
         <div class="lg:col-span-4">
@@ -116,7 +116,7 @@ function buildIndex() {
             <p class="text-xs text-gray-500 mb-5">Đơn hàng tối thiểu từ 30 cái - Chiết khấu cao</p>
             <form data-b2b-form="hero-quick-quote" class="space-y-3.5">
               <div>
-                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Quy cách Pallet</label>
+                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Quy cách Pallet</label>
                 <select class="w-full text-xs px-3 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand outline-none bg-gray-50">
                   <option value="keo-1210">Pallet Gỗ Keo (1200x1000mm) - Tải 1-2.5 tấn</option>
                   <option value="thong-euro">Pallet Gỗ Thông Euro/EPAL (1200x800mm)</option>
@@ -127,16 +127,16 @@ function buildIndex() {
               </div>
               <div class="grid grid-cols-2 gap-3">
                 <div>
-                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Số lượng (cái)</label>
+                  <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Số lượng (cái)</label>
                   <input type="number" min="30" placeholder="VD: 200" required class="w-full text-xs px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand outline-none">
                 </div>
                 <div>
-                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Số ĐT / Zalo</label>
+                  <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Số ĐT / Zalo</label>
                   <input type="tel" placeholder="09xx xxx xxx" required class="w-full text-xs px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand outline-none">
                 </div>
               </div>
               <div>
-                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">KCN / Nhà máy tiếp nhận</label>
+                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">KCN / Nhà máy tiếp nhận</label>
                 <input type="text" placeholder="VD: KCN VSIP 1, KCN Amata..." required class="w-full text-xs px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand outline-none">
               </div>
               <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-xl transition shadow">
