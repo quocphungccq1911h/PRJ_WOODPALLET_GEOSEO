@@ -1,10 +1,8 @@
 {
   "name": "prj-woodpallet-geoseo",
   "version": "1.0.0",
-  "description": "Dự án Nền Tảng B2B Xưởng Sản Xuất Pallet Gỗ (Monorepo: Frontend + Backend CMS)",
+  "private": true,
   "scripts": {
-    "dev": "node frontend/server.js",
-    "dev:frontend": "node frontend/server.js",
-    "build:frontend": "node frontend/build_all.js"
+    "dev": "node server.js"
   }
 }
