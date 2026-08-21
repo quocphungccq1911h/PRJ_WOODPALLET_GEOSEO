@@ -4,7 +4,6 @@
   "description": "Frontend UI/UX cho Xưởng Sản Xuất Pallet Gỗ Việt B2B",
   "scripts": {
     "dev": "node server.js",
-    "start": "node server.js",
-    "build": "node build_all.js"
+    "start": "node server.js"
   }
 }
