@@ -16,7 +16,7 @@ function renderProductCard(p) {
             ${p.woodName}
           </span>
         </div>
-        <div class="p-5">
+        <div class="p-4 sm:p-5">
           <div class="flex items-center gap-1.5 text-xs text-amber-700 font-semibold mb-1">
             <i class="fa-solid fa-arrows-up-down-left-right"></i> ${p.entryName}
           </div>
@@ -30,7 +30,7 @@ function renderProductCard(p) {
           </div>
         </div>
       </div>
-      <div class="p-5 pt-0">
+      <div class="p-4 sm:p-5 pt-0">
         <div class="text-xs text-gray-500 mb-2">Giá tham khảo B2B: <span class="text-brand font-bold text-sm">${p.price}</span></div>
         <div class="grid grid-cols-2 gap-2">
           <button onclick="addToQuoteCart({id:'${p.id}', name:'${p.name}', size:'${p.size}', woodType:'${p.woodName}', loadCapacity:'${p.capacity}', standard:'${p.standardText}', quantity: 100, priceEst:'${p.price}', image:'${p.image}'})"
@@ -75,32 +75,32 @@ function buildIndex() {
       <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2000&q=80" alt="Xưởng Pallet Gỗ" class="w-full h-full object-cover opacity-25">
       <div class="absolute inset-0 hero-overlay"></div>
     </div>
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24">
+    <div class="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-24">
       <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-8">
         
         <!-- CỘT TRÁI (W: 7/12) -->
-        <div class="w-full lg:w-7/12 pr-0 lg:pr-6 space-y-5 sm:space-y-6">
-          <div class="inline-flex items-center gap-2 bg-emerald-900/80 border border-emerald-600/50 px-3 py-1.5 rounded-full text-[11px] sm:text-xs md:text-sm font-semibold text-emerald-300 max-w-full">
+        <div class="w-full lg:w-7/12 pr-0 lg:pr-6 space-y-4 sm:space-y-6">
+          <div class="inline-flex items-center gap-1.5 sm:gap-2 bg-emerald-900/80 border border-emerald-600/50 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs md:text-sm font-semibold text-emerald-300 max-w-full">
             <i class="fa-solid fa-certificate text-amber-400 flex-shrink-0"></i>
             <span class="truncate">TIÊU CHUẨN XUẤT KHẨU ISPM 15 / SẤY HT</span>
           </div>
 
-          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold leading-tight tracking-tight text-white mb-4">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-[38px] font-bold leading-snug tracking-tight text-white mb-2 sm:mb-4">
             <span class="block">Xưởng Sản Xuất Pallet Gỗ Trực Tiếp</span>
-            <span class="text-amber-400 block mt-1">Giá Gốc Không Qua Trung Gian</span>
+            <span class="text-amber-400 block mt-0.5 sm:mt-1">Giá Gốc Không Qua Trung Gian</span>
           </h1>
 
-          <p class="text-white/90 font-normal text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl">
+          <p class="text-white/90 font-normal text-xs sm:text-base md:text-lg leading-relaxed max-w-2xl">
             Cung cấp số lượng lớn <strong>Pallet Gỗ Keo, Gỗ Thông, Pallet Ván Ép, Thùng Gỗ Xuất Khẩu</strong> cho các nhà máy, tập đoàn logistics và kho vận tại KCN Bình Dương, Đồng Nai, TP.HCM, Bắc Ninh. Nhận đóng mẫu theo bản vẽ kỹ thuật riêng.
           </p>
 
-          <div class="space-y-3 sm:space-y-4 pt-2">
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-              <button onclick="openQuickQuoteModal()" class="w-full sm:w-auto bg-brand-accent hover:bg-orange-600 text-white text-sm sm:text-base font-bold px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl shadow-xl hover:shadow-orange-600/30 transition duration-200 flex items-center justify-center gap-3">
+          <div class="space-y-3 sm:space-y-4 pt-1 sm:pt-2">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-4">
+              <button onclick="openQuickQuoteModal()" class="w-full sm:w-auto bg-brand-accent hover:bg-orange-600 text-white text-sm sm:text-base font-bold px-5 sm:px-7 py-3 sm:py-4 rounded-xl shadow-xl hover:shadow-orange-600/30 transition duration-200 flex items-center justify-center gap-2 sm:gap-3">
                 <i class="fa-solid fa-calculator"></i>
                 <span>Nhận Báo Giá Sỉ Ngay</span>
               </button>
-              <a href="san-pham.html" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/30 text-white text-sm sm:text-base font-semibold px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl backdrop-blur-sm transition duration-200 flex items-center justify-center gap-2">
+              <a href="san-pham.html" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/30 text-white text-sm sm:text-base font-semibold px-5 sm:px-7 py-3 sm:py-4 rounded-xl backdrop-blur-sm transition duration-200 flex items-center justify-center gap-2">
                 <i class="fa-solid fa-list-check"></i>
                 <span>Xem Danh Mục Pallet</span>
               </a>
@@ -113,24 +113,24 @@ function buildIndex() {
             </div>
           </div>
 
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 pt-4 sm:pt-6 border-t border-emerald-800/60 text-xs sm:text-sm font-medium text-white">
-            <div class="flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-check text-amber-400 flex-shrink-0"></i> <span>Đóng đinh xoắn</span></div>
-            <div class="flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-check text-amber-400 flex-shrink-0"></i> <span>Giao nhanh 2-4h</span></div>
-            <div class="flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-check text-amber-400 flex-shrink-0"></i> <span>Bản vẽ 3D Free</span></div>
-            <div class="flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-check text-amber-400 flex-shrink-0"></i> <span>Hóa đơn VAT</span></div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 pt-3 sm:pt-6 border-t border-emerald-800/60 text-xs sm:text-sm font-medium text-white">
+            <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-400 flex-shrink-0"></i> <span>Đóng đinh xoắn</span></div>
+            <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-400 flex-shrink-0"></i> <span>Giao nhanh 2-4h</span></div>
+            <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-400 flex-shrink-0"></i> <span>Bản vẽ 3D Free</span></div>
+            <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-400 flex-shrink-0"></i> <span>Hóa đơn VAT</span></div>
           </div>
         </div>
 
         <!-- CỘT PHẢI (W: 5/12) -->
         <div class="w-full lg:w-5/12">
-          <div class="bg-white text-gray-800 rounded-2xl p-5 sm:p-7 shadow-2xl border-2 border-amber-500/80 relative">
-            <div class="absolute -top-3.5 right-4 sm:right-6 bg-brand-accent text-white text-[10px] sm:text-xs font-extrabold uppercase px-2.5 sm:px-3 py-1 rounded-full shadow">Phản Hồi 15 Phút</div>
-            <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-1">Khảo Sát & Báo Giá B2B</h3>
-            <p class="text-xs text-gray-500 mb-4 sm:mb-5">Đơn hàng tối thiểu từ 30 cái - Chiết khấu cao</p>
+          <div class="bg-white text-gray-800 rounded-2xl p-4 sm:p-7 shadow-2xl border-2 border-amber-500/80 relative">
+            <div class="absolute -top-3.5 right-4 sm:right-6 bg-brand-accent text-white text-[10px] sm:text-xs font-extrabold uppercase px-2 sm:px-3 py-1 rounded-full shadow">Phản Hồi 15 Phút</div>
+            <h3 class="text-base sm:text-xl font-bold text-gray-900 mb-0.5 sm:mb-1">Khảo Sát & Báo Giá B2B</h3>
+            <p class="text-xs text-gray-500 mb-3 sm:mb-5">Đơn hàng tối thiểu từ 30 cái - Chiết khấu cao</p>
             <form data-b2b-form="hero-quick-quote" class="space-y-3 sm:space-y-3.5">
               <div>
-                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Quy cách Pallet</label>
-                <select class="w-full text-xs px-3 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand outline-none bg-gray-50">
+                <label class="block text-[11px] sm:text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Quy cách Pallet</label>
+                <select class="w-full text-xs px-3 py-2 sm:py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand outline-none bg-gray-50">
                   <option value="keo-1210">Pallet Gỗ Keo (1200x1000mm) - Tải 1-2.5 tấn</option>
                   <option value="thong-euro">Pallet Gỗ Thông Euro/EPAL (1200x800mm)</option>
                   <option value="keo-1111">Pallet Gỗ Keo vuông (1100x1100mm)</option>
@@ -138,21 +138,21 @@ function buildIndex() {
                   <option value="theo-yeu-cau">Đóng theo bản vẽ kỹ thuật riêng</option>
                 </select>
               </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                 <div>
-                  <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Số lượng (cái)</label>
+                  <label class="block text-[11px] sm:text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Số lượng (cái)</label>
                   <input type="number" min="30" placeholder="VD: 200" required class="w-full text-xs px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand outline-none">
                 </div>
                 <div>
-                  <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Số ĐT / Zalo</label>
+                  <label class="block text-[11px] sm:text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Số ĐT / Zalo</label>
                   <input type="tel" placeholder="09xx xxx xxx" required class="w-full text-xs px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand outline-none">
                 </div>
               </div>
               <div>
-                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">KCN / Nhà máy tiếp nhận</label>
+                <label class="block text-[11px] sm:text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">KCN / Nhà máy tiếp nhận</label>
                 <input type="text" placeholder="VD: KCN VSIP 1, KCN Amata..." required class="w-full text-xs px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand outline-none">
               </div>
-              <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-3 sm:py-3.5 rounded-xl transition shadow">
+              <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-2.5 sm:py-3.5 rounded-xl transition shadow text-xs sm:text-sm">
                 <i class="fa-solid fa-paper-plane mr-1"></i> Gửi Yêu Cầu Báo Giá Nhanh
               </button>
             </form>
@@ -166,31 +166,31 @@ function buildIndex() {
 
   const stats = `
   <section class="bg-white border-b border-gray-200 relative z-20 -mt-2 shadow-sm w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-center divide-y sm:divide-y-0 sm:divide-x divide-gray-200">
-        <div class="pt-3 sm:pt-0"><div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand mb-1">10.000 m²</div><div class="text-[11px] sm:text-xs md:text-sm font-semibold text-gray-800 uppercase">Diện Tích Nhà Xưởng</div><p class="text-[11px] sm:text-xs text-gray-500 mt-1">3 phân xưởng sản xuất</p></div>
-        <div class="pt-3 sm:pt-0"><div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand mb-1">50.000+</div><div class="text-[11px] sm:text-xs md:text-sm font-semibold text-gray-800 uppercase">Pallet / Tháng</div><p class="text-[11px] sm:text-xs text-gray-500 mt-1">Đáp ứng đơn hàng lớn</p></div>
-        <div class="pt-3 sm:pt-0"><div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand mb-1">ISPM 15</div><div class="text-[11px] sm:text-xs md:text-sm font-semibold text-gray-800 uppercase">Sấy Khử Trùng HT</div><p class="text-[11px] sm:text-xs text-gray-500 mt-1">Đóng dấu mộc chuẩn IPPC</p></div>
-        <div class="pt-3 sm:pt-0"><div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-accent mb-1">2 - 4 Giờ</div><div class="text-[11px] sm:text-xs md:text-sm font-semibold text-gray-800 uppercase">Giao Hỏa Tốc</div><p class="text-[11px] sm:text-xs text-gray-500 mt-1">Xe tải 5T-15T & Cont riêng</p></div>
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 text-center divide-y sm:divide-y-0 sm:divide-x divide-gray-200">
+        <div class="pt-2 sm:pt-0"><div class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-brand mb-0.5">10.000 m²</div><div class="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 uppercase">Diện Tích Nhà Xưởng</div><p class="text-[10px] sm:text-xs text-gray-500 mt-0.5">3 phân xưởng sản xuất</p></div>
+        <div class="pt-2 sm:pt-0"><div class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-brand mb-0.5">50.000+</div><div class="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 uppercase">Pallet / Tháng</div><p class="text-[10px] sm:text-xs text-gray-500 mt-0.5">Đáp ứng đơn hàng lớn</p></div>
+        <div class="pt-2 sm:pt-0"><div class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-brand mb-0.5">ISPM 15</div><div class="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 uppercase">Sấy Khử Trùng HT</div><p class="text-[10px] sm:text-xs text-gray-500 mt-0.5">Đóng dấu mộc chuẩn IPPC</p></div>
+        <div class="pt-2 sm:pt-0"><div class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-brand-accent mb-0.5">2 - 4 Giờ</div><div class="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 uppercase">Giao Hỏa Tốc</div><p class="text-[10px] sm:text-xs text-gray-500 mt-0.5">Xe tải & Cont riêng</p></div>
       </div>
     </div>
   </section>
   `;
 
   const featured = `
-  <section class="py-12 sm:py-16 md:py-20 bg-white w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-3">
+  <section class="py-10 sm:py-16 md:py-20 bg-white w-full">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6 sm:mb-12 gap-2 sm:gap-3">
         <div>
-          <span class="text-xs font-bold uppercase tracking-widest text-brand bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200">Danh Mục Chủ Lực</span>
-          <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 mt-2 font-display">SẢN PHẨM PALLET GỖ TIÊU CHUẨN & XUẤT KHẨU</h2>
+          <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-brand bg-emerald-50 px-2.5 sm:px-3 py-1 rounded-md border border-emerald-200">Danh Mục Chủ Lực</span>
+          <h2 class="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 mt-1.5 sm:mt-2 font-display">SẢN PHẨM PALLET GỖ TIÊU CHUẨN & XUẤT KHẨU</h2>
         </div>
-        <a href="san-pham.html" class="text-brand hover:text-brand-light font-bold text-xs sm:text-sm flex items-center gap-2 group flex-shrink-0">
+        <a href="san-pham.html" class="text-brand hover:text-brand-light font-bold text-xs sm:text-sm flex items-center gap-1.5 group flex-shrink-0">
           <span>Xem tất cả danh mục (20+ mẫu)</span>
           <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition"></i>
         </a>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         ${products.slice(0, 4).map(p => renderProductCard(p)).join('')}
       </div>
     </div>
@@ -198,37 +198,37 @@ function buildIndex() {
   `;
 
   const workflow = `
-  <section class="py-12 sm:py-16 md:py-20 bg-gray-50 border-t border-b border-gray-200 w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-        <span class="text-xs font-bold uppercase tracking-widest text-brand bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200">Quy Trình Chuẩn Hóa B2B</span>
-        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 mt-2 sm:mt-3 font-display">QUY TRÌNH HỢP TÁC & SẢN XUẤT CHUYÊN NGHIỆP</h2>
+  <section class="py-10 sm:py-16 md:py-20 bg-gray-50 border-t border-b border-gray-200 w-full">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-14">
+        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-brand bg-emerald-50 px-2.5 sm:px-3 py-1 rounded-md border border-emerald-200">Quy Trình Chuẩn Hóa B2B</span>
+        <h2 class="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 mt-1.5 sm:mt-3 font-display">QUY TRÌNH HỢP TÁC & SẢN XUẤT CHUYÊN NGHIỆP</h2>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
-        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200 text-center"><div class="w-12 h-12 bg-emerald-100 text-emerald-800 font-bold rounded-full flex items-center justify-center text-lg mx-auto mb-4">1</div><h3 class="font-bold text-gray-900 text-base mb-2">Tiếp Nhận Yêu Cầu</h3><p class="text-xs text-gray-600">Khảo sát tải trọng, kệ hàng và xe nâng.</p></div>
-        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200 text-center"><div class="w-12 h-12 bg-emerald-100 text-emerald-800 font-bold rounded-full flex items-center justify-center text-lg mx-auto mb-4">2</div><h3 class="font-bold text-gray-900 text-base mb-2">Bản Vẽ & Mẫu Thử</h3><p class="text-xs text-gray-600">Thiết kế 2D/3D, gửi pallet mẫu test thực tế.</p></div>
-        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200 text-center"><div class="w-12 h-12 bg-emerald-100 text-emerald-800 font-bold rounded-full flex items-center justify-center text-lg mx-auto mb-4">3</div><h3 class="font-bold text-gray-900 text-base mb-2">Cưa Xẻ & Đóng Đinh</h3><p class="text-xs text-gray-600">Cưa nhiều lưỡi, bắn đinh xoắn chịu lực.</p></div>
-        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200 text-center"><div class="w-12 h-12 bg-emerald-100 text-emerald-800 font-bold rounded-full flex items-center justify-center text-lg mx-auto mb-4">4</div><h3 class="font-bold text-gray-900 text-base mb-2">Sấy Nhiệt & ISPM 15</h3><p class="text-xs text-gray-600">Độ ẩm &lt;18%, hun trùng đóng dấu IPPC.</p></div>
-        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200 text-center sm:col-span-2 md:col-span-1"><div class="w-12 h-12 bg-emerald-100 text-emerald-800 font-bold rounded-full flex items-center justify-center text-lg mx-auto mb-4">5</div><h3 class="font-bold text-gray-900 text-base mb-2">Giao Hàng KCN</h3><p class="text-xs text-gray-600">Giao tận kho bãi, bàn giao chứng từ & VAT.</p></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
+        <div class="bg-white p-4 sm:p-6 rounded-2xl border border-gray-200 text-center"><div class="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-100 text-emerald-800 font-bold rounded-full flex items-center justify-center text-base sm:text-lg mx-auto mb-3 sm:mb-4">1</div><h3 class="font-bold text-gray-900 text-sm sm:text-base mb-1 sm:mb-2">Tiếp Nhận Yêu Cầu</h3><p class="text-xs text-gray-600">Khảo sát tải trọng, kệ hàng và xe nâng.</p></div>
+        <div class="bg-white p-4 sm:p-6 rounded-2xl border border-gray-200 text-center"><div class="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-100 text-emerald-800 font-bold rounded-full flex items-center justify-center text-base sm:text-lg mx-auto mb-3 sm:mb-4">2</div><h3 class="font-bold text-gray-900 text-sm sm:text-base mb-1 sm:mb-2">Bản Vẽ & Mẫu Thử</h3><p class="text-xs text-gray-600">Thiết kế 2D/3D, gửi pallet mẫu test thực tế.</p></div>
+        <div class="bg-white p-4 sm:p-6 rounded-2xl border border-gray-200 text-center"><div class="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-100 text-emerald-800 font-bold rounded-full flex items-center justify-center text-base sm:text-lg mx-auto mb-3 sm:mb-4">3</div><h3 class="font-bold text-gray-900 text-sm sm:text-base mb-1 sm:mb-2">Cưa Xẻ & Đóng Đinh</h3><p class="text-xs text-gray-600">Cưa nhiều lưỡi, bắn đinh xoắn chịu lực.</p></div>
+        <div class="bg-white p-4 sm:p-6 rounded-2xl border border-gray-200 text-center"><div class="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-100 text-emerald-800 font-bold rounded-full flex items-center justify-center text-base sm:text-lg mx-auto mb-3 sm:mb-4">4</div><h3 class="font-bold text-gray-900 text-sm sm:text-base mb-1 sm:mb-2">Sấy Nhiệt & ISPM 15</h3><p class="text-xs text-gray-600">Độ ẩm &lt;18%, hun trùng đóng dấu IPPC.</p></div>
+        <div class="bg-white p-4 sm:p-6 rounded-2xl border border-gray-200 text-center sm:col-span-2 md:col-span-1"><div class="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-100 text-emerald-800 font-bold rounded-full flex items-center justify-center text-base sm:text-lg mx-auto mb-3 sm:mb-4">5</div><h3 class="font-bold text-gray-900 text-sm sm:text-base mb-1 sm:mb-2">Giao Hàng KCN</h3><p class="text-xs text-gray-600">Giao tận kho bãi, bàn giao chứng từ & VAT.</p></div>
       </div>
     </div>
   </section>
   `;
 
   const partners = `
-  <section class="py-12 sm:py-16 md:py-20 bg-white w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-        <span class="text-xs font-bold uppercase tracking-widest text-brand bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200">Khách Hàng Tiêu Biểu</span>
-        <h2 class="text-xl sm:text-2xl font-extrabold text-gray-900 mt-2 font-display">ĐỐI TÁC DOANH NGHIỆP TẠI CÁC KCN</h2>
+  <section class="py-10 sm:py-16 md:py-20 bg-white w-full">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-12">
+        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-brand bg-emerald-50 px-2.5 sm:px-3 py-1 rounded-md border border-emerald-200">Khách Hàng Tiêu Biểu</span>
+        <h2 class="text-lg sm:text-2xl font-extrabold text-gray-900 mt-1.5 sm:mt-2 font-display">ĐỐI TÁC DOANH NGHIỆP TẠI CÁC KCN</h2>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4 text-center font-bold text-gray-400 text-xs sm:text-sm mb-12">
-        <div class="bg-white p-4 sm:p-5 rounded-xl border border-gray-100 shadow-sm hover:border-emerald-200 hover:text-emerald-800 transition-colors tracking-wider flex items-center justify-center">VSIP GROUP</div>
-        <div class="bg-white p-4 sm:p-5 rounded-xl border border-gray-100 shadow-sm hover:border-emerald-200 hover:text-emerald-800 transition-colors tracking-wider flex items-center justify-center">SÓNG THẦN LOG</div>
-        <div class="bg-white p-4 sm:p-5 rounded-xl border border-gray-100 shadow-sm hover:border-emerald-200 hover:text-emerald-800 transition-colors tracking-wider flex items-center justify-center">AMATA CORP</div>
-        <div class="bg-white p-4 sm:p-5 rounded-xl border border-gray-100 shadow-sm hover:border-emerald-200 hover:text-emerald-800 transition-colors tracking-wider flex items-center justify-center">SAMSUNG FDI</div>
-        <div class="bg-white p-4 sm:p-5 rounded-xl border border-gray-100 shadow-sm hover:border-emerald-200 hover:text-emerald-800 transition-colors tracking-wider flex items-center justify-center">FOXCONN VN</div>
-        <div class="bg-white p-4 sm:p-5 rounded-xl border border-gray-100 shadow-sm hover:border-emerald-200 hover:text-emerald-800 transition-colors tracking-wider flex items-center justify-center">CP GROUP</div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5 sm:gap-4 text-center font-bold text-gray-400 text-xs sm:text-sm mb-8 sm:mb-12">
+        <div class="bg-white p-3.5 sm:p-5 rounded-xl border border-gray-100 shadow-sm hover:border-emerald-200 hover:text-emerald-800 transition-colors tracking-wider flex items-center justify-center">VSIP GROUP</div>
+        <div class="bg-white p-3.5 sm:p-5 rounded-xl border border-gray-100 shadow-sm hover:border-emerald-200 hover:text-emerald-800 transition-colors tracking-wider flex items-center justify-center">SÓNG THẦN LOG</div>
+        <div class="bg-white p-3.5 sm:p-5 rounded-xl border border-gray-100 shadow-sm hover:border-emerald-200 hover:text-emerald-800 transition-colors tracking-wider flex items-center justify-center">AMATA CORP</div>
+        <div class="bg-white p-3.5 sm:p-5 rounded-xl border border-gray-100 shadow-sm hover:border-emerald-200 hover:text-emerald-800 transition-colors tracking-wider flex items-center justify-center">SAMSUNG FDI</div>
+        <div class="bg-white p-3.5 sm:p-5 rounded-xl border border-gray-100 shadow-sm hover:border-emerald-200 hover:text-emerald-800 transition-colors tracking-wider flex items-center justify-center">FOXCONN VN</div>
+        <div class="bg-white p-3.5 sm:p-5 rounded-xl border border-gray-100 shadow-sm hover:border-emerald-200 hover:text-emerald-800 transition-colors tracking-wider flex items-center justify-center">CP GROUP</div>
       </div>
     </div>
   </section>
